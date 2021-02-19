@@ -97,7 +97,7 @@ header {
 
 @keyframes moveBanner {
   0% {
-    transform: translateY(20rem) rotateY(-30deg);
+    transform: translateY(20rem) rotateY(-50deg);
   }
   100% {
     transform: translateY(0) rotateY(0deg);
