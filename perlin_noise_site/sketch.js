@@ -4,6 +4,7 @@ var roff = 654;
 var goff = 123;
 var boff = 159;
 var soff = 2192819;
+var aoff = 81632;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
@@ -22,14 +23,16 @@ function draw() {
   goff += 0.05;
   var b = map(noise(boff), 0, 1, 0, 255);
   boff += 0.05;
+  var a = noise(aoff);
+  aoff += 0.05;
 
 
   fill(r,g,b);
-  //noStroke();
+  //stroke(r,g,b);
   //fill(random(0,255), random(0,255), random(0,255))
 
 
   ellipse(x, y, (noise(soff)*100))
-  soff +=0.01;
+  soff +=0.05;
 
 }
