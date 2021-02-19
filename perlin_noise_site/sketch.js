@@ -3,6 +3,7 @@ var yoff = 1000;
 var roff = 654;
 var goff = 123;
 var boff = 159;
+var soff = 2192819;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
@@ -16,11 +17,11 @@ function draw() {
   yoff += 0.01;
   
   var r = map(noise(roff), 0, 1, 0, 255);
-  roff += 0.02;
+  roff += 0.05;
   var g = map(noise(goff), 0, 1, 0, 255);
-  goff += 0.02;
+  goff += 0.05;
   var b = map(noise(boff), 0, 1, 0, 255);
-  boff += 0.02;
+  boff += 0.05;
 
 
   fill(r,g,b);
@@ -28,6 +29,7 @@ function draw() {
   //fill(random(0,255), random(0,255), random(0,255))
 
 
-  ellipse(x, y, (noise(roff)*100))
+  ellipse(x, y, (noise(soff)*100))
+  soff +=0.01;
 
 }

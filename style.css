@@ -33,15 +33,47 @@
   right: 16rem;
 }
 
+.hamburguer span {
+  color: white;
+  font-size: 1rem;
+  font-family: var(--font-action);
+  text-transform: capitalize;
+  position: absolute;
+  height: 2rem;
+  width: 6rem;
+  left: 3rem;
+  background-color: #333399;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.hamburguer span::before {
+  content: "";
+  position: absolute;
+  border-right: 0.5rem solid #333399;
+  border-top: 0.5rem solid transparent;
+  border-left: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  left: -1rem;
+}
+
+.show-menu .hamburguer span {
+  opacity: 1;
+}
+
 .show-menu #line1 {
-  transform: rotate(45deg) translate(0.2rem, +0.45rem);
+  box-shadow: none;
+  transform: rotate(45deg) translate(0.3rem, +0.4rem);
 }
 .show-menu #line2 {
   opacity: 0;
   visibility: hidden;
 }
 .show-menu #line3 {
-  transform: rotate(-45deg) translate(0.2rem, -0.5rem);
+  box-shadow: none;
+  transform: rotate(-45deg) translate(0.35rem, -0.45rem);
 }
 
 .line {
@@ -72,6 +104,7 @@ header {
   object-fit: cover;
   opacity: 0.5;
   animation: zoom 25s;
+  overflow: hidden;
 }
 
 @keyframes zoom {
@@ -180,12 +213,12 @@ header {
   font-family: var(--font-action);
   font-size: 2.2rem;
   font-weight: 400;
-  color: #555;
+  color: rgb(54, 53, 53);
   transition: color 1s;
 }
 
 .menu-link:hover {
-  color: #f700e2;
+  color: #f603ca;
 }
 
 .social-media {
@@ -197,6 +230,7 @@ header {
 }
 
 .social-media i {
+  color: #39319a;
   width: 3rem;
   height: 3rem;
   font-size: 3rem;
@@ -207,9 +241,5 @@ header {
 }
 
 .social-media i:hover {
-  color: #b13ffd;
-}
-
-.sketch{
-
+  color: #f603ca;
 }
