@@ -342,7 +342,6 @@ header {
   width: 18rem;
   height: 25rem;
   position: relative;
-  
 }
 
 .card-img-wrapper {
@@ -350,7 +349,6 @@ header {
   width: 100%;
   border-radius: 0.5rem;
   background-color: #616169;
-  
 }
 
 .card-img-wrapper img {
@@ -413,3 +411,88 @@ header {
   padding: 0.5rem 1.5rem;
   cursor: pointer;
 }
+
+.section-contato {
+  width: 100%;
+  height: 100vh;
+  background-color: #616169;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contato-wrapper {
+  height: 60%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.contato-left {
+  height: 100%;
+  width: 35%;
+  background: linear-gradient(rgba(15, 15, 15, 0.6), rgba(200, 200, 200, 0.8)),
+    url(/resources/images/contact.jpg);
+
+  background-size: cover;
+}
+
+.contato-right {
+  height: 100%;
+  width: 65%;
+  background-color: #ccc;
+}
+
+.section-contato h1 {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.section-contato form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.field {
+  background: white;
+  border: 1px solid black;
+  /* border-bottom: 1px dashed #999999; */
+  height: 1.5rem;
+  width: 100%;
+  font-size: 1.5rem;
+  font-family: var(--font-secundary);
+  outline: none;
+  margin: 1rem 0;
+  
+}
+
+.input-group{
+  position: relative;
+  
+}
+
+.input-group textarea{
+  width: 100%;
+  max-width: 30rem;
+  max-height: 4.5rem;
+  /* height: 4.5rem; */
+  resize: none;
+}
+
+.field-label{
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+  font-family: var(--font-action);
+  font-weight: bold;
+  
+  
+}
+
