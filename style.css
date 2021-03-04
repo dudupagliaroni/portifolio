@@ -279,8 +279,7 @@ header {
 .conhecimento-text {
   margin-top: 1rem;
   font-family: var(--font-secundary);
-  margin-bottom: 0.2rem;
-  text-align: justify;
+  margin-bottom: 0.3rem;
 }
 
 .conhecimento-header {
@@ -292,7 +291,6 @@ header {
 .conhecimento:nth-child(1) {
   grid-column: 4 / 7;
   grid-row: 1 / 5;
-  margin-bottom: 0.5rem;
 }
 
 .conhecimento:nth-child(2) {
@@ -335,7 +333,9 @@ header {
 .projetos {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 5rem;
+
+  background-color: #686262;
+  padding: 3rem;
 }
 
 .card {
@@ -544,7 +544,38 @@ header {
   padding: 0.1rem;
 }
 
-.btn-orcamento{
-    grid-column: 2;
+.btn-orcamento {
+  grid-column: 2;
 }
 
+footer{
+  width: 100%;
+  height: 10rem;
+  background-color: #17181b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.footer-content p{
+  font-family: var(--font-secundary);
+  color: #a7a7a7;
+  font-size: 1.2rem;
+}
+
+.social-list a{
+  margin: 0 2rem;
+  color: #a7a7a7;
+  font-size: 1.3rem;
+}
+
+.social-list ul {
+  display: flex;
+}
