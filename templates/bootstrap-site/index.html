@@ -9,6 +9,7 @@
       src="https://kit.fontawesome.com/276cfd093c.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/mouse2d/libraries/p5.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link
@@ -21,11 +22,10 @@
 
     <title>Eduardo Pagliaroni Portifólio</title>
   </head>
+  
   <body>
-    <!-- ************  SECTION  ************** -->
-    <!-- ************ /SECTION  ************** -->
 
-    <!-- ************ SECTION 1 *************** -->
+    <!-- ************ SECTION 1 NAVBAR & HEADING *************** -->
 
     <section class="section_1 container-fluid p-0">
       <div class="d-flex flex-column">
@@ -77,21 +77,23 @@
             </nav>
           </header>
         </div>
-        <div class="cointainer-fluid text-center heading">
+        <div class="cointainer-fluid text-center heading" id="canvas-p5">
+          <script src="/mouse2d/sketch.js"></script>
+          
           <h1 class="h1 m-2">Web Developer <span>.</span></h1>
-          <div><h3>Olá</h3></div>
-          <p class="p m-2">
+          <div><h3 class="text-light p-0 m-0">Olá</h3></div>
+          <p class="p m-2 text-light">
             Eu sou Eduardo, desenvolvedor web full-stack. Aqui você pode ver meu
             portifólio, com os meus projetos pessoais e acessar os códigos na
             minha página do GitHib
           </p>
           <button type="button" class="btn btn1 btn-primary">Portifólio</button>
-          <button type="button" class="btn btn2 btn-info">GitHub</button>
+          <button onclick="location.href='https://github.com/dudupagliaroni'" type="button" class="btn btn2 btn-info">GitHub</button>
         </div>
       </div>
     </section>
 
-    <!-- ************ /SECTION 1 ************** -->
+
 
     <!-- ************ SECTION 2  *************** -->
 
@@ -107,43 +109,138 @@
       </div>
     </section>
 
-    <!-- ************ /SECTION 2 ************** -->
+
 
     <!-- ************  SECTION 3 ************** -->
 
     <section class="section_3 container-fluid p-0">
       <div class="d-flex flex-column text-center projects">
-        <div>
-          <h1>Projects</h1>
-        </div>
-        <div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis possimus itaque consequatur non officiis. Dolorum?</p>
+
         </div>
         <div class="images">
-          <div class="d-sm-flex flex-column">
+          <div class="d-sm-flex flex-row">
             <div class="flex-fill">
-              <img src="/templates/bootstrap-site/img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg" alt="">
+              <img
+                class="img-fluid"
+                src="/templates/bootstrap-site/img/andrew-neel-cckf4TsHAuw-unsplash.jpg"
+                alt=""
+              />
             </div>
             <div class="flex-fill">
-              <img src="/templates/bootstrap-site/img/alienware-ickPGVMMr98-unsplash.jpg" alt="">
-            </div>
-            <div class="flex-fill">
-              <img src="/templates/bootstrap-site/img/andrew-neel-cckf4TsHAuw-unsplash.jpg" alt="">
-            </div>
-            <div class="flex-fill">
-              <img src="/templates/bootstrap-site/img/christopher-gower-m_HRfLhgABo-unsplash.jpg" alt="">
+              <img
+                class="img-fluid"
+                src="/templates/bootstrap-site/img/christopher-gower-m_HRfLhgABo-unsplash.jpg"
+                alt=""
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ************ /SECTION 3 ************** -->
+
+
+    <!-- ************  SECTION 4 ************** -->
+
+    <section class="section_4 container-fluid p-1">
+      <div class="d-flex flex-column text-center services">
+        <div><h1>Services</h1></div>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
+            veritatis deserunt eligendi totam voluptatem earum?
+          </p>
+        </div>
+        <div class="d-sm-flex flex-row">
+          <div class="cards">
+            <i class="fas fa-pencil-alt fa-3x"></i>
+            <h3>Web Design</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim hic
+              est libero quaerat ipsum quibusdam!
+            </p>
+          </div>
+          <div class="cards">
+            <i class="fas fa-code fa-3x"></i>
+            <h3>Development</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim hic
+              est libero quaerat ipsum quibusdam!
+            </p>
+          </div>
+          <div class="cards">
+            <i class="fas fa-palette fa-3x"></i>
+            <h3>Art</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim hic
+              est libero quaerat ipsum quibusdam!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ************  SECTION 5 - SOBRE MIM ************** -->
+
+    <section class="section_5 container-fluid p-1">
+      <div class="aboutme d-flex flex-column text-center">
+        <div><h1>Sobre mim</h1></div>
+        <div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum
+            similique corrupti tenetur possimus saepe harum!
+          </p>
+        </div>
+        <div>
+          <img
+            class="img-fluid"
+            src="/templates/bootstrap-site/img/IMG_20201031_180458693.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ************  SECTION 6 - FOOTER ************** -->
+
+    <section class="section_6 bg-dark p-2">
+      <div class="d-sm-flex flex-column text-light">
+        <footer>
+          <label for="info">Informações</label>
+          <ul>
+            <li>Portifólio</li>
+            <li>GitHub</li>
+            <li>Serviços</li>
+            <li>Contato</li>
+          </ul>
+        </footer>
+        <div>
+          <footer class="text-center">
+            <p><i class="fas fa-copyright"></i> Eduardo Pagliaroni - 2021</p>
+
+            <div class="social-icons fa-2x p-0">
+              <i class="fab fa-github"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-whatsapp"></i>
+              
+            </div>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <!-- ************ /SECTION 6 ************** -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
+  
   </body>
 </html>

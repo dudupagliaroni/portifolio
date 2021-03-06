@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Bungee|Hind|PT+Sans|Pacifico|Poppins|Lobster");
+
+:root {
+  --tomato-color: #ff433d;
+  --yellow-color: #ffb347;
+  --megenta-color: rgba(168, 2, 168, 0.897);
+  --lime-color: rgba(8, 248, 80, 0.932);
+  --light-orange: #ff6215;
+  --poppins: "Poppins", sans-serif;
+  --bungee: "Bungee", cursive;
+  --lobster: "Lobster", cursive;
+  --pacifico: "Pacifico", cursive;
+}
+
+/*              Homepage Design             */
+
+.navbar {
+  background-color: #002f49a2;
+}
+
+.nav-item {
+  padding: 0em 1.3em;
+}
+.nav-link {
+  font-family: var(--poppins);
+  color: whitesmoke;
+  font-size: 1.1em;
+}
+.nav-link:hover {
+  color: var(--light-orange);
+}
+
+.heading .h1 {
+  font-family: var(--bungee);
+  font-size: 7vmin;
+  padding-top: 28vmin;
+  color: var(--yellow-color);
+}
+
+.heading .h1 + span {
+  color: var(--yellow-color);
+}
+
+.heading .p {
+  padding: 1rem;
+  color: rgb(70, 65, 65);
+  font-size: 3.5vmin;
+}
+
+.heading {
+  margin-bottom: 10vmin;
+}
+
+/*/              Homepage Design             /*/
+
+/*                     Section 2                          */
+
+.section_2 h1 {
+    font-family: var(--bungee);
+    font-size: 6vmin;
+  };
+
+.section_2 .p {
+    padding: 1rem;
+    color: rgb(70, 65, 65);
+    font-size: 3.5vmin;
+  }
+
+/*                        Section 4                         */
+
+.section_4 .services h1 {
+  font-family: var(--bungee);
+  font-size: 2em;
+  padding: 2em 0 0.6em 0;
+}
+.section_4 .services > p {
+  font-size: 1em;
+  font-family: var(--poppins);
+}
+.section_4 .services .cards {
+  padding: 3em;
+  padding-top: 0em;
+}
+.section_4 .services .cards i {
+  padding: 1em;
+}
+.section_4 .services .cards h3 {
+  font-family: var(--bungee);
+}
+.section_4 .services .cards > p {
+  padding: 0.4em;
+}
+
+.section_4 .services .cards:first-child i,
+.cards:first-child h3 {
+  color: var(--tomato-color);
+}
+.section_4 .services .cards:nth-child(2) i,
+.cards:nth-child(2) h3 {
+  color: var(--lime-color);
+}
+.section_4 .services .cards:nth-child(3) i,
+.cards:nth-child(3) h3 {
+  color: var(--megenta-color);
+}
+.section_4 {
+  margin-bottom: 2em;
+}
+
+.section_5 {
+  background: #833ab4;
+  background: -webkit-linear-gradient(to left, #fcb045, #fd1d1d, #833ab4);
+  background: linear-gradient(to left, #fcb045, #fd1d1d, #833ab4);
+}
+
+.section_5 img {
+  border-radius: 50%;
+  max-width: 300px;
+}
