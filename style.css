@@ -546,6 +546,7 @@ header {
 
 .btn-orcamento {
   grid-column: 2;
+  border: solid 2px black;
 }
 
 footer{
@@ -556,6 +557,8 @@ footer{
   justify-content: center;
   align-items: center;
 }
+
+
 
 .footer-content{
   width: 60%;
