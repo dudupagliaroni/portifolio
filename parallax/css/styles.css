@@ -64,20 +64,34 @@ body {
    margin-left: 10%;
 }
 
+.hero2-white .content {
+
+   font-family: 'Poppins', sans-serif;
+   color: black;
+   text-align: left;
+   margin-left: 10%;
+}
+
 .hero2 .content h2 {
    font-size: 80px; 
    line-height: 90px;
    margin: 0;   
 }
 
-.hero2 .content h3 {
+.hero2 .content h2 {
+   font-size: 80px; 
+   line-height: 90px;
+   margin: 0;   
+}
+
+.content h3 {
    font-size: 30px;  
    margin: 0; 
 }
 
-.hero2 .content button {
+.content button {
    background-color: transparent;
-   border: 1px solid white;
+   border: 2px solid white;
    color: white;
    padding: 12px 20px;
    font-family: poppins;
@@ -88,21 +102,21 @@ body {
    cursor: pointer;
 }
 
-.hero2 .content button:hover {
+.content button:hover {
    background-color: white;
    color: #ab4ad6;
    transition: 0.5s;
   
 }
 
-.hero2 img.hagen {
+img.hagen {
    width: 400px;
    position: absolute;
    bottom: 0;
    left: 15%;
 }
 
-.hero2 img.ice-cream {
+img.ice-cream {
    position: absolute;
    bottom: 0;
    right: 15%;
