@@ -14,7 +14,7 @@ function setup() {
   canvasDiv = document.getElementById("main-page");
   divWidth = canvasDiv.offsetWidth;
   let divHeight = canvasDiv.offsetHeight;
-  let canvas = createCanvas(divWidth+16, divHeight);
+  let canvas = createCanvas(divWidth+16, divHeight-100);
   canvas.parent("main-page");
   //background(84, 37, 129);
   reset();
