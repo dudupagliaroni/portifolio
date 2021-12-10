@@ -73,9 +73,9 @@ class Snake {
     stroke(100);
     for (var i = 0; i < this.tail.length; i++) {
       if (this.tail[i] == this.tail[0]) {
-        fill(0, 255, 0);
+        fill(255,105,180);
       } else {
-        fill(0, 150, 0);
+        fill(255,20,147);
       }
       rect(this.tail[i].x, this.tail[i].y, scl);
     }
