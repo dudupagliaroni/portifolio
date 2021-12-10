@@ -62,7 +62,7 @@ class Snake {
       this.tail[0].x = width - scl;
     }
     if (this.tail[0].y >= height) {
-      this.tail[0].y = 0 + scl;
+      this.tail[0].y = 0;
     }
     if (this.tail[0].y < 0) {
       this.tail[0].y = height - scl;
