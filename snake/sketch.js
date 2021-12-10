@@ -1,8 +1,8 @@
 let scl = 30;
 let snake;
 function setup() {
-  frameRate(5);
-  let canvas = createCanvas(390, 390);
+  frameRate(6);
+  let canvas = createCanvas(450, 450);
   canvas.parent("canvas-p5");
 
   snake = new Snake(scl, scl);
