@@ -11,17 +11,19 @@ class Mover {
   }
 
   update() {
-    let mouse = createVector(width / 2, height / 2);
-    this.acc = p5.Vector.sub(mouse, this.pos);
-    this.acc.setMag(0.12);
+    let center = createVector(width / 2, height / 2);
+    this.acc = p5.Vector.sub(center, this.pos);
+    this.acc.setMag(0.1);
     this.vel.add(this.acc);
-    this.vel.limit(5.5);
+    //console.log(this.vel.mag());
+    //console.log(this.vel.toString);
+    this.vel.limit(4);
     this.pos.add(this.vel);
     //console.log(this.vel);
     this.r = map(
       dist(width / 2, height / 2, this.pos.x, this.pos.y),
-      93,
-      180,
+      56,
+      118,
       0,
       255
     );
@@ -31,11 +33,11 @@ class Mover {
 
   show() {
     console.log(dist(width / 2, height / 2, this.pos.x, this.pos.y));
-    //console.log(this.r);
+    console.log(this.r);
     noStroke();
     //stroke(255);
     
-    fill(this.r/10, 50, this.r);
+    fill(this.r, this.r, 100);
     ellipse(this.pos.x, this.pos.y, 5);
     strokeWeight(4);
     stroke(255);
