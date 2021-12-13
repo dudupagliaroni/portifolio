@@ -27,7 +27,7 @@ class Mover {
       255
     );
     this.b = map(this.vel.mag(), 0, 5, 0, 255);
-    this.g = map(this.vel.mag(), 0, 5, 0, 255);
+    this.g = map(this.vel.mag(), 0, 5, 255, 0);
   }
 
   show() {
