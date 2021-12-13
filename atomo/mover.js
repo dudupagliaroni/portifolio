@@ -15,11 +15,10 @@ class Mover {
     this.acc = p5.Vector.sub(center, this.pos);
     this.acc.setMag(0.1);
     this.vel.add(this.acc);
-    //console.log(this.vel.mag());
-    //console.log(this.vel.toString);
+
     this.vel.limit(4);
     this.pos.add(this.vel);
-    //console.log(this.vel);
+
     this.r = map(
       dist(width / 2, height / 2, this.pos.x, this.pos.y),
       56,
@@ -27,20 +26,16 @@ class Mover {
       0,
       255
     );
-    this.b = map(this.vel.y, -5, 5, 0, 255);
-    this.g = map(this.vel.x, -5, 5, 0, 255);
+    this.b = map(this.vel.mag(), 0, 5, 0, 255);
+    this.g = map(this.vel.mag(), 0, 5, 0, 255);
   }
 
   show() {
-    console.log(dist(width / 2, height / 2, this.pos.x, this.pos.y));
-    console.log(this.r);
     noStroke();
-    //stroke(255);
-    
-    fill(this.r, this.r, 100);
+    fill(this.r, this.g, this.b);
     ellipse(this.pos.x, this.pos.y, 5);
     strokeWeight(4);
     stroke(255);
-    point(width/2, height/2)
+    point(width / 2, height / 2);
   }
 }

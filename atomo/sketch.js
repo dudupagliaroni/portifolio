@@ -8,6 +8,8 @@ function setup() {
 }
 
 function draw() {
+  //background(0,1);
   walker.update();
   walker.show();
 }
+5
