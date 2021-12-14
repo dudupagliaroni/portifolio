@@ -1,10 +1,23 @@
 let scl = 30;
 let snake;
+let resetButton;
+let sliderR;
+let sliderG;
+let sliderB;
+let inputWidth;
+
 function setup() {
-  frameRate(6);
+  frameRate(5);
   let canvas = createCanvas(450, 450);
   canvas.parent("canvas-p5");
-
+  //resetButton = createButton("Reset");
+  sliderR = createSlider(0, 255, 100, 1);
+  //inputWidth = createInput(400);
+  createP("r");
+  sliderG = createSlider(0, 255, 100, 1);
+  createP("g");
+  sliderB = createSlider(0, 255, 100, 1);
+  createP("b");
   snake = new Snake(scl, scl);
   food = new Food();
   food.update(snake);
@@ -17,9 +30,9 @@ function draw() {
   food.show();
   snake.update();
   snake.isDead();
-  snake.show();
+  snake.show(sliderR.value(), sliderG.value(), sliderB.value());
   if (snake.tail[0].x == food.pos.x && snake.tail[0].y == food.pos.y) {
-    snake.createpart();
+    snake.createPart();
     snake.total++;
     food.update(snake);
     changeText(snake.total * 10);
@@ -46,6 +59,6 @@ function resetGame() {
   document.location.reload();
 }
 
-function showGameOverMessage(){
-document.getElementById("game-over-text").style.visibility = "visible";
+function showGameOverMessage() {
+  document.getElementById("game-over-text").style.visibility = "visible";
 }
