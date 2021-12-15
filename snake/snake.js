@@ -12,18 +12,16 @@ class Snake {
     for (var i = 1; i < this.tail.length; i++) {
       if (this.tail[0].x == this.tail[i].x && this.tail[0].y == this.tail[i].y) {
           showGameOverMessage();
-          console.log("YOU LOSE")
           noLoop();
       }
     }
   }
 
-  createpart() {
+  createPart() {
     this.tail[this.total + 3] = createVector(this.tail[1].x, this.tail[1].y);
   }
 
-  foodwaseaten(food) {
-    console.log(food.pos.x);
+  foodWasEaten(food) {
     if (this.tail[0].x == food.pos.x && this.tail[0].y == food.pos.y) {
       return true;
     } else {
@@ -69,13 +67,13 @@ class Snake {
     }
   }
 
-  show() {
+  show(r,g,b) {
     stroke(100);
     for (var i = 0; i < this.tail.length; i++) {
       if (this.tail[i] == this.tail[0]) {
-        fill(0,255,0);
+        fill(r,g,b);
       } else {
-        fill(0,150,0);
+        fill(r,g-50,b);
       }
       rect(this.tail[i].x, this.tail[i].y, scl);
     }
