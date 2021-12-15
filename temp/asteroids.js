@@ -39,7 +39,7 @@ function Asteroid() {
       this.pos.y = -this.r;
     }
     if (this.pos.y < -this.r) {
-      this.pos.y = height - this.r;
+      this.pos.y = height + this.r;
     }
   };
 }
