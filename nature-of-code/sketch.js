@@ -1,8 +1,11 @@
 let mover;
+let inputArray;
 
 function setup() {
   createCanvas(800, 800);
   mover = new Mover();
+  inputArray = [3, 6, -2, -5, 7, 3];
+  console.log(solution(inputArray));
 }
 
 function draw() {
@@ -21,4 +24,10 @@ function draw() {
 
 function mouseReleased() {
   return true;
+}
+
+function solution(inputArray_) {
+  inputArray_.sort();
+  console.log(inputArray_.length)
+  return inputArray_[inputArray_.length-1] * inputArray_[inputArray_.length-2];//sortedArray[inputArray_];
 }
