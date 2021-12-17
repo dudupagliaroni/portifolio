@@ -1,26 +1,32 @@
 let mover;
 let obstacle;
 let grid;
-let grid_x_rel;
+var asteroids = [];
+
 
 function setup() {
-  createCanvas(640, 480);
-
-  pos_relative = createVector();
+  createCanvas(800, 800);
   mover = new Mover();
   obstacle = new Obstacle();
   grid = new Grid();
+  // for (var i = 0; i < 7; i++) {
+  //   asteroids.push(new Asteroid(grid,400,400));
+  // }
 }
 
 function draw() {
-  background(220);
+  background(0);
   grid.drawLines();
   grid.pos.sub(mover.vel);
   mover.turn();
   mover.update();
   mover.show();
-  obstacle.show(grid, 400, 400);
-  console.log(grid.pos);
+  obstacle.show(grid, 2500, 400);
+  // for (var i = 0; i < this.asteroids.length; i++) {
+  //   this.asteroids[i].render();
+  //   this.asteroids[i].update();
+  // }
+  console.log(grid.pos)
 }
 
 function keyPressed() {
