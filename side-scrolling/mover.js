@@ -1,10 +1,47 @@
 function Mover() {
   this.width = 50;
   this.height = 100;
-  this.pos = createVector(width/2-this.width/2, 400 - this.height);
+
+  this.pos = createVector(width / 2, height / 2);
+  this.vel = createVector(0, 0);
+  this.acc = createVector(0, 0);
+
+  this.r = 20;
+  this.heading = 0;
+  this.rotation = 0;
+  this.isBoosting = false;
+
+  this.boost = function () {
+    var force = p5.Vector.fromAngle(this.heading);
+    this.vel.add(force.mult(0.1));
+    this.vel.limit(5);
+  };
+
+  this.update = function () {
+    if (this.isBoosting) {
+      this.boost();
+    }
+    this.vel.mult(0.99);
+  };
 
   this.show = function () {
-      fill(255,0,255);
-    rect(this.pos.x, this.pos.y, this.width, this.height);
+    push();
+    fill(255, 0, 255);
+    translate(this.pos.x, this.pos.y);
+    rotate(this.heading + PI / 2);
+    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    pop();
+  };
+
+  this.boosting = function (b) {
+    this.isBoosting = b;
+  };
+
+  this.setRotaion = function (a) {
+    this.rotation = a;
+  };
+
+  this.turn = function () {
+    this.heading += this.rotation;
   };
 }
