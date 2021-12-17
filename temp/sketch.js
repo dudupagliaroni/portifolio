@@ -52,7 +52,7 @@ function keyPressed() {
     ship.setRotaion(-0.1);
   } else if (keyCode == UP_ARROW) {
     ship.boosting(true);
-  } else if ((keyCode = " ")) {
+  } else if ((keyCode = 229)) {
     lasers.push(new Laser(ship.pos, ship.heading));
   }
 }

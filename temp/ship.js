@@ -3,7 +3,7 @@ function Ship() {
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
 
-  this.r = 10;
+  this.r = 20;
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
@@ -46,11 +46,24 @@ function Ship() {
 
   this.render = function () {
     push();
-    stroke(255);
-    fill(0);
+
     translate(this.pos.x, this.pos.y);
     rotate(this.heading + PI / 2);
-    triangle(-this.r, this.r, this.r, this.r, 0, -this.r );
+    if (this.isBoosting) {
+      fill(255,255,150);
+      stroke(255, 0, 0);
+      triangle(
+        this.r / 2,
+        -this.r + this.r * 2,
+        -this.r / 2,
+        -this.r + this.r * 2,
+        0,
+        this.r + this.r
+      );
+    }
+    stroke(255);
+    fill(0);
+    triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
     pop();
   };
 
