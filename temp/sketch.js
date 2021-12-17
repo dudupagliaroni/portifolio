@@ -4,6 +4,7 @@ lasers = [];
 
 function setup() {
   createCanvas(800, 800);
+  background(0);
   ship = new Ship();
   for (var i = 0; i < 7; i++) {
     asteroids.push(new Asteroid());
@@ -23,6 +24,11 @@ function draw() {
   for (var i = 0; i < this.lasers.length; i++) {
     this.lasers[i].render();
     this.lasers[i].update();
+    for (var j = 0; j < this.asteroids.length; j++) {
+      if (lasers[i].hits(asteroids[j])) {
+
+     }
+    }
   }
 
   ship.turn();
