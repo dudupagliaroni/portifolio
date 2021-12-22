@@ -1,12 +1,14 @@
-function Laser(grid, shipPos, heading) {
+function Laser(_grid, shipRelPos, heading) {
+  this.grid = _grid;
   this.pos = createVector();
+  this.posInGrid = shipRelPos.copy();
   this.vel = p5.Vector.fromAngle(heading);
-  this.vel.setMag(10);
+  this.vel.setMag(5git);
 
   this.update = function () {
-    (this.pos.x = grid.pos.x + grid.width / 2)+shipPos.x;
-    (this.pos.y = grid.pos.y + grid.height / 2)+shipPos.y;
-    //this.pos.add(this.vel);
+    this.pos.x = this.grid.pos.x + this.grid.width / 2 + this.posInGrid.x;
+    this.pos.y = this.grid.pos.y + this.grid.height / 2 - this.posInGrid.y;
+    this.pos.add(this.vel);
   };
 
   this.show = function () {
@@ -15,12 +17,5 @@ function Laser(grid, shipPos, heading) {
     strokeWeight(4);
     point(this.pos.x, this.pos.y);
     pop();
-  };
-
-  this.hits = function (asteroid) {
-    var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y);
-    if (d < asteroid.r) {
-      console.log("HIT");
-    }
   };
 }

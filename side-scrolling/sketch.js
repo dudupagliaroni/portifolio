@@ -7,11 +7,11 @@ var asteroids = [];
 let lasers = [];
 
 function setup() {
-  createCanvas(1024, 720);
-  grid = new Grid(1000, 1000);
+  createCanvas(500, 500);
+  grid = new Grid(500, 500);
   mover = new Mover();
   polyShape = new PolyShape(grid);
-  generateAsteroids(5);
+  generateAsteroids(1);
 
   centerGrid = new Obstacle(grid, 0, 0);
 }
@@ -21,30 +21,30 @@ function draw() {
 
   grid.drawLines();
   grid.pos.sub(mover.vel);
-  //centerGrid.update();
-  // centerGrid.show();
+  centerGrid.update();
+  centerGrid.show();
 
   mover.turn();
   mover.update();
   mover.updatePositionToGrid();
   mover.show();
+  //console.log(mover.relPos)
 
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].update();
     asteroids[i].show();
   }
 
-   for (var i = 0; i < lasers.length; i++) {
+  for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
-     lasers[i].show();
-     
-   }
-
+    lasers[i].show();
+  }
 
   polyShape.update();
-  polyShape.show();
+  // polyShape.show();
 
   showCoordenates();
+  //console.log(grid.pos);
 }
 
 function keyPressed() {
@@ -56,6 +56,7 @@ function keyPressed() {
     mover.boosting(true);
   } else if ((keyCode = 229)) {
     lasers.push(new Laser(grid, mover.relPos, mover.heading));
+    console.log(mover.relPos);
   }
 }
 
@@ -73,10 +74,11 @@ function showCoordenates() {
   fill(255);
   textSize(14);
   textFont("Helvetica");
-  text("x: " + Math.round(mover.relPos.x), 30, 30);
-  text("y: " + Math.round(mover.relPos.y), 30, 60);
-  text("x_rel: " + Math.round(mover.pos.x), 30, 90);
-  text("y_rel: " + Math.round(mover.pos.y), 30, 120);
+  text("relPos.x: " + Math.round(mover.relPos.x), 30, 30);
+  text("relPos.y: " + Math.round(mover.relPos.y), 30, 60);
+  text("mover.pos.x: " + Math.round(mover.pos.x), 30, 90);
+  text("mover.pos.y: " + Math.round(mover.pos.y), 30, 120);
+
 }
 
 function generateAsteroids(num) {

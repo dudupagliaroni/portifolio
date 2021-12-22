@@ -14,6 +14,7 @@ function setup() {
 function draw() {
   background(0);
   drawScore();
+  console.log("x")
 
   for (var i = 0; i < this.asteroids.length; i++) {
     this.asteroids[i].render();
@@ -29,6 +30,7 @@ function draw() {
   ship.turn();
   ship.render();
   ship.update();
+  
   ship.edges();
 }
 

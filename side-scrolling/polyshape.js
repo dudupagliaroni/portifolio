@@ -31,6 +31,6 @@ function PolyShape(grid) {
 
     hit = collidePointPoly(mouseX, mouseY, poly);
     stroke(hit ? color("red") : 0);
-    print("colliding?", hit);
+    //print("colliding?", hit);
   };
 }

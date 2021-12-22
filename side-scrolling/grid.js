@@ -8,7 +8,7 @@ function Grid(_width, _height) {
   );
 
   this.drawLines = function () {
-    let scl = 100;
+    let scl = 50;
     stroke(255, 100);
     for (var i = 0; i < this.width / scl + 1; i++) {
       line(

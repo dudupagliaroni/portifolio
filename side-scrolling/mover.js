@@ -22,7 +22,7 @@ function Mover() {
     if (this.isBoosting) {
       this.boost();
     }
-    this.vel.mult(0.991);
+    this.vel.mult(0.995);
   };
 
   this.show = function () {
@@ -47,7 +47,7 @@ function Mover() {
   };
 
   this.updatePositionToGrid = function () {
-    this.relPos.x = grid.pos.x + grid.width / 2 - width / 2;
+    this.relPos.x = ((grid.pos.x + grid.width / 2) - width / 2)*-1;;
     this.relPos.y = grid.pos.y + grid.height / 2 - height / 2;
   };
 }
