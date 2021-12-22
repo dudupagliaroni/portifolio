@@ -15,19 +15,20 @@ function Mover() {
   this.boost = function () {
     var force = p5.Vector.fromAngle(this.heading);
     this.vel.add(force.mult(0.1));
-    this.vel.limit(10);
+    this.vel.limit(5);
   };
 
   this.update = function () {
     if (this.isBoosting) {
       this.boost();
     }
-    this.vel.mult(0.995);
+    this.vel.mult(0.99);
   };
 
   this.show = function () {
     push();
-    fill(255, 0, 255);
+    noStroke();
+    fill(255, 0, 100);
     translate(this.pos.x, this.pos.y);
     rotate(this.heading + PI / 2);
     triangle(-this.r + 5, this.r, this.r - 5, this.r, 0, -this.r);

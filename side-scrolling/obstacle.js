@@ -2,11 +2,14 @@ function Obstacle(_grid, _x, _y) {
   this.width = 50;
   this.height = 50;
   this.grid = _grid;
-  this.pos = createVector();
+  this.pos = createVector(_x, _y);
+  this.vel = this.pos.copy();
+  this.vel.setMag(5);
 
   this.update = function () {
-    this.pos.x = grid.pos.x + grid.width / 2 + _x;
-    this.pos.y = grid.pos.y + grid.height / 2 + _y;
+    this.pos.x = this.grid.pos.x + this.grid.width / 2 + _x;
+    this.pos.y = this.grid.pos.y + this.grid.height / 2 + _y;
+    this.pos.add(this.vel);
   };
 
   this.show = function () {
@@ -15,9 +18,6 @@ function Obstacle(_grid, _x, _y) {
     fill(0);
     textSize(10);
     textFont("Helvetica");
-    //relative position to center
-    // text("x: " + (this.pos.x - width / 2), this.pos.x + 5, this.pos.y + 15);
-    // text("y: " + (this.pos.y - height / 2)*-1, this.pos.x + 5, this.pos.y + 30);
     text("x: " + _x, this.pos.x + 5, this.pos.y + 15);
     text("y: " + _y * -1, this.pos.x + 5, this.pos.y + 30);
   };
