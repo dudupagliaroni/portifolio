@@ -99,7 +99,7 @@ function generateAsteroids(num) {
 }
 
 function deleteLaser() {
-  if (lasers.length > 5) {
-    //lasers.pop();
+  if (lasers.length > 100) {
+    lasers.pop();
   }
 }

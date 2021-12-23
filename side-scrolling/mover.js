@@ -7,7 +7,7 @@ function Mover() {
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
 
-  this.r = 15;
+  this.r = 20;
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
@@ -30,8 +30,9 @@ function Mover() {
     noStroke();
     fill(255, 0, 100);
     translate(this.pos.x, this.pos.y);
+    rotate(this.heading);
+    triangle(-this.r, this.r, this.r, 0, -this.r, -this.r);
     rotate(this.heading + PI / 2);
-    triangle(-this.r + 5, this.r, this.r - 5, this.r, 0, -this.r);
     pop();
   };
 
@@ -48,7 +49,7 @@ function Mover() {
   };
 
   this.updatePositionToGrid = function () {
-    this.relPos.x = ((grid.pos.x + grid.width / 2) - width / 2)*-1;;
+    this.relPos.x = (grid.pos.x + grid.width / 2 - width / 2) * -1;
     this.relPos.y = grid.pos.y + grid.height / 2 - height / 2;
   };
 }
