@@ -2,6 +2,7 @@ function Grid(_width, _height) {
   this.width = _width;
   this.height = _height;
 
+
   this.pos = createVector(
     width / 2 - this.width / 2,
     height / 2 - this.height / 2

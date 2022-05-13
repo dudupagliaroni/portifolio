@@ -8,7 +8,7 @@ let lasers = [];
 
 function setup() {
   createCanvas(1024, 720);
-  grid = new Grid(1000, 1000);
+  grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
   generateAsteroids(1);
