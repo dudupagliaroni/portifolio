@@ -32,8 +32,10 @@ function Mover() {
     translate(this.pos.x, this.pos.y);
     rotate(this.heading);
     triangle(-this.r, this.r, this.r, 0, -this.r, -this.r);
-    rotate(this.heading + PI / 2);
+
+    
     pop();
+
   };
 
   this.boosting = function (b) {

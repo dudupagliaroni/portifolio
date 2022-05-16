@@ -20,7 +20,7 @@ function Laser(_grid, shipRelPos, heading) {
     push();
     stroke(0, 255, 0);
     strokeWeight(4);
-    //translate(this.pos.x/2, this.pos.y/2);
+    //  translate(this.pos.x/2, this.pos.y/2);
     point(this.pos.x, this.pos.y);
     pop();
   };
