@@ -3,7 +3,7 @@ function Laser(_grid, shipRelPos, heading) {
   this.pos = createVector();
   this.posInGrid = shipRelPos.copy();
   this.vel = p5.Vector.fromAngle(-heading);
-  this.vel.setMag(10);
+  this.vel.setMag(3);
 
   this.update = function () {
     this.pos.x = this.grid.pos.x + this.grid.width / 2 + this.posInGrid.x;
