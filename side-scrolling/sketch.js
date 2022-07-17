@@ -7,8 +7,8 @@ var asteroids = [];
 let lasers = [];
 
 function setup() {
-  createCanvas(1024, 720);
-  grid = new Grid(10000, 10000);
+  createCanvas(500, 500);
+  grid = new Grid(1000, 1000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
   generateAsteroids(1);
@@ -25,7 +25,6 @@ function draw() {
   centerGrid.show();
 
   
-  //console.log(mover.relPos)
 
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].update();
@@ -34,17 +33,16 @@ function draw() {
 
   for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
-    lasers[i].addVel();
     lasers[i].show();
   }
 
   deleteLaser();
 
   polyShape.update();
-  // polyShape.show();
+
 
   showCoordenates();
-  //console.log(grid.pos);
+
   shipUpdate();
 }
 
@@ -63,8 +61,7 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
   } else if ((keyCode = 229)) {
-    lasers.push(new Laser(grid, mover.relPos, mover.heading));
-    //console.log(mover.relPos);
+    lasers.push(new Laser(grid, mover));
   }
 }
 
@@ -100,6 +97,6 @@ function generateAsteroids(num) {
 
 function deleteLaser() {
   if (lasers.length > 100) {
-    lasers.pop();
+    //lasers.pop();
   }
 }

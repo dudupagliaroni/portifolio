@@ -1,8 +1,7 @@
 function Mover() {
-  this.width = 50;
-  this.height = 100;
 
   this.pos = createVector(width / 2, height / 2);
+  this.gun = createVector();
   this.relPos = createVector();
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
@@ -31,19 +30,20 @@ function Mover() {
     fill(255, 0, 100);
     translate(this.pos.x, this.pos.y);
     rotate(this.heading);
-    triangle(-this.r, this.r, this.r, 0, -this.r, -this.r);
+    triangle(-this.r, this.r / 1.5, this.r, 0, -this.r, -this.r / 1.5);
+    stroke(255);
+    strokeWeight(4)
+    point(this.gun.x, this.gun.y);
 
-    
     pop();
-
   };
 
-  this.boosting = function (b) {
-    this.isBoosting = b;
+  this.boosting = function (isBoosting) {
+    this.isBoosting = isBoosting;
   };
 
-  this.setRotaion = function (a) {
-    this.rotation = a;
+  this.setRotaion = function (angle) {
+    this.rotation = angle;
   };
 
   this.turn = function () {
@@ -53,5 +53,11 @@ function Mover() {
   this.updatePositionToGrid = function () {
     this.relPos.x = (grid.pos.x + grid.width / 2 - width / 2) * -1;
     this.relPos.y = grid.pos.y + grid.height / 2 - height / 2;
+    this.updateGunPosition();
+  };
+
+  this.updateGunPosition = function () {
+    this.gun.x = this.r;
+    this.gun.y = 0;
   };
 }

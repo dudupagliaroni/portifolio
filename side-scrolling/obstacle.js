@@ -1,6 +1,6 @@
 function Obstacle(_grid, _x, _y) {
-  this.width = 50;
-  this.height = 50;
+  this.width = 22;
+  this.height = 22;
   this.grid = _grid;
   this.pos = createVector(_x, _y);
   this.vel = this.pos.copy();
