@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.screen {
+  height: 100vh;
+}
+
+.teste{
+  display: flex;
+  height: 50vh;
+  background-color: blue;
+}
+

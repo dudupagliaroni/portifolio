@@ -11,11 +11,11 @@ let canvasDiv;
 let divWidth;
 
 function setup() {
-  canvasDiv = document.getElementById("main-page");
+  canvasDiv = document.getElementById("sketch-1");
   divWidth = canvasDiv.offsetWidth;
   let divHeight = canvasDiv.offsetHeight;
   let canvas = createCanvas(divWidth+16, divHeight-100);
-  canvas.parent("main-page");
+  canvas.parent("sketch-1");
   //background(84, 37, 129);
   reset();
   liquid = new Liquid(0, height / 2, width, height / 2, 0.1);
