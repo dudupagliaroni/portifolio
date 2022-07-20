@@ -1,5 +1,19 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
 .main-page{
+  display: flex;
+  justify-content: center;
   padding: 0;
   height: 100vh;
   background-color: #542581;
+}
+
+.canvas-div {
+  width: 80%;
+  height: 60vh;
+  margin: 20px;
+  background-color: blue;
 }

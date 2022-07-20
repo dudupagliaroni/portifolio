@@ -73,7 +73,7 @@ class Snake {
       if (this.tail[i] == this.tail[0]) {
         fill(r,g,b);
       } else {
-        fill(r,g-50,b);
+        fill(r,g-20,b);
       }
       rect(this.tail[i].x, this.tail[i].y, scl);
     }
