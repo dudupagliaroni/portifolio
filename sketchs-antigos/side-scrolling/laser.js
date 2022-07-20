@@ -1,33 +1,42 @@
-function Laser(_grid, ship) {
+function Laser(_grid, _ship) {
+  this.width = 50;
+  this.height = 50;
   this.grid = _grid;
-  this.pos = createVector();
-  this.startPos = createVector();
-  this.posInGrid = ship.relPos.copy();
-  this.vel = p5.Vector.fromAngle(-ship.heading);
+  let dir = _ship.heading;
+  this.posInGrid = _ship.relPos.copy();
+  let _x = _ship.relPos.x + 50 * cos(dir);
+  let _y = -_ship.relPos.y + 50 * sin(dir);
 
-  // this.startPos.x = this.posInGrid.x  + (ship.r * cos(ship.heading));
-  // this.startPos.y = this.posInGrid.y + (ship.r * sin(ship.heading));
-  
-  // this.posInGrid.add(this.startPos);
-
-  this.pos.x = this.grid.pos.x + this.grid.width / 2 + this.posInGrid.x;
-  this.pos.y = this.grid.pos.y + this.grid.height / 2 - this.posInGrid.y;
+  console.log(_ship.heading);
 
   this.update = function () {
-    // this.pos.x = this.grid.pos.x + this.grid.width / 2 + this.posInGrid.x;
-    // this.pos.y = this.grid.pos.y + this.grid.height / 2 - this.posInGrid.y;
-    
-    
-    this.posInGrid.add(this.vel);
-     
+    this.posInGrid.x = this.grid.pos.x + this.grid.width / 2 + _x;
+    this.posInGrid.y = this.grid.pos.y + this.grid.height / 2 + _y;
+    _x += 18 * cos(dir);
+    _y += 18 * sin(dir);
   };
 
   this.show = function () {
     push();
     stroke(0, 255, 0);
-    strokeWeight(4);
-    //translate(this.pos.x/2, this.pos.y/2);
-    point(this.pos.x, this.pos.y);
+    strokeWeight(2.5);
+    line(
+      this.posInGrid.x,
+      this.posInGrid.y,
+      this.posInGrid.x + 15 * cos(dir),
+      this.posInGrid.y + 15 * sin(dir)
+    );
     pop();
+  };
+
+  this.showLocation = function () {
+    textSize(10);
+    textFont("Helvetica");
+    text("x: " + Math.round(_x), this.posInGrid.x + 5, this.posInGrid.y + 15);
+    text(
+      "y: " + Math.round(_y) * -1,
+      this.posInGrid.x + 5,
+      this.posInGrid.y + 30
+    );
   };
 }

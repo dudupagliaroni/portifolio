@@ -3,16 +3,16 @@ let obstacle;
 let grid;
 let polyShape;
 
-var asteroids = [];
+let asteroids = [];
 let lasers = [];
 
+
 function setup() {
-  createCanvas(500, 500);
-  grid = new Grid(1000, 1000);
+  createCanvas(1200, 800);
+  grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
-  generateAsteroids(1);
-
+  generateAsteroids(50);
   centerGrid = new Obstacle(grid, 0, 0);
 }
 
@@ -24,22 +24,15 @@ function draw() {
   centerGrid.update();
   centerGrid.show();
 
-  
-
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].update();
     asteroids[i].show();
   }
-
+  
   for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
     lasers[i].show();
   }
-
-  deleteLaser();
-
-  polyShape.update();
-
 
   showCoordenates();
 
@@ -61,6 +54,7 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
   } else if ((keyCode = 229)) {
+    console.log("SPACE")
     lasers.push(new Laser(grid, mover));
   }
 }
@@ -79,10 +73,8 @@ function showCoordenates() {
   fill(255);
   textSize(14);
   textFont("Helvetica");
-  text("relPos.x: " + Math.round(mover.relPos.x), 30, 30);
-  text("relPos.y: " + Math.round(mover.relPos.y), 30, 60);
-  text("mover.pos.x: " + Math.round(mover.pos.x), 30, 90);
-  text("mover.pos.y: " + Math.round(mover.pos.y), 30, 120);
+  text("ship.pos.x: " + Math.round(mover.relPos.x), 30, 30);
+  text("ship.pos.y: " + Math.round(mover.relPos.y), 30, 50);
 }
 
 function generateAsteroids(num) {
