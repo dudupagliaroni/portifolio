@@ -75,7 +75,7 @@ function showCoordenates() {
   textFont("Helvetica");
   text("ship.pos.x: " + Math.round(mover.relPos.x), 30, 30);
   text("ship.pos.y: " + Math.round(mover.relPos.y), 30, 50);
-}
+
 
 function generateAsteroids(num) {
   for (let i = 0; i < num; i++) {
