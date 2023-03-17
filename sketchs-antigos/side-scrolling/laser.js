@@ -1,9 +1,9 @@
 function Laser(_grid, _ship) {
-  this.width = 50;
-  this.height = 50;
+  this.width = 40;
   this.grid = _grid;
   let dir = _ship.heading;
   this.posInGrid = _ship.relPos.copy();
+  this.posInicial = this.posInGrid.copy();
   let _x = _ship.relPos.x + 50 * cos(dir);
   let _y = -_ship.relPos.y + 50 * sin(dir);
 
@@ -23,26 +23,9 @@ function Laser(_grid, _ship) {
     line(
       this.posInGrid.x,
       this.posInGrid.y,
-      this.posInGrid.x + 15 * cos(dir),
-      this.posInGrid.y + 15 * sin(dir)
+      this.posInGrid.x + this.width * cos(dir),
+      this.posInGrid.y + this.width * sin(dir)
     );
     pop();
   };
-
-  this.showLocation = function () {
-    textSize(10);
-    textFont("Helvetica");
-    text("x: " + Math.round(_x), this.posInGrid.x + 5, this.posInGrid.y + 15);
-    text(
-      "y: " + Math.round(_y) * -1,
-      this.posInGrid.x + 5,
-      this.posInGrid.y + 30
-    );
-  };
-
-  function deleteLaser() {
-    if (lasers > 100) {
-      //lasers.pop();
-    }
-  }
 }

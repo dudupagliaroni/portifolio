@@ -10,19 +10,19 @@ function setup() {
   const CANVAS = createCanvas(800, 800);
   CANVAS.parent("canvas");
 
-  colorPicker = createColorPicker('#ed225d');
+  colorPicker = createColorPicker("#ed225d");
   colorPicker.parent("colorPicker");
 
   sliderAtrito = createSlider(0.98, 1, 1, 0.0001);
   sliderAtrito.parent("slideAtrito");
 
   valAtrito = createP("teste");
-  valAtrito.parent("val-atrito")
+  valAtrito.parent("val-atrito");
 
   grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
-  generateAsteroids(50);
+  generateAsteroids(15);
   centerGrid = new Obstacle(grid, 0, 0);
 }
 
@@ -44,14 +44,13 @@ function draw() {
     lasers[i].show();
   }
 
-
-  valAtrito.html(sliderAtrito.value())
+  valAtrito.html(sliderAtrito.value());
 
   showCoordenates();
 
   shipUpdate();
 
-  console.log(mover.fuel)
+  deleteLaser();
 }
 
 function shipUpdate() {
@@ -86,11 +85,12 @@ function keyReleased() {
 function showCoordenates() {
   stroke(0);
   fill(255);
-  textSize(14);
+  textSize(15);
   textFont("Helvetica");
   text("ship.pos.x: " + Math.round(mover.relPos.x), 30, 30);
   text("ship.pos.y: " + Math.round(mover.relPos.y), 30, 50);
   text("ship.fuel: " + Math.round(mover.fuel), 30, 70);
+  text("lasers: " + lasers.length, 30, 90);
 }
 
 function generateAsteroids(num) {
@@ -103,4 +103,11 @@ function generateAsteroids(num) {
   }
 }
 
-
+function deleteLaser() {
+  for (i = 0; i < lasers.length; i++) {
+    if (lasers[i].posInicial.dist(lasers[i].posInGrid) > 1000) {
+      index = lasers.indexOf(i);
+      lasers.splice(index, 1);
+    }
+  }
+}
