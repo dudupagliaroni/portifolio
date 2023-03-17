@@ -90,7 +90,7 @@ function showCoordenates() {
   textFont("Helvetica");
   text("ship.pos.x: " + Math.round(mover.relPos.x), 30, 30);
   text("ship.pos.y: " + Math.round(mover.relPos.y), 30, 50);
-  text("ship.fuel: " + Math.round(mover.fuel, 30, 70));
+  text("ship.fuel: " + Math.round(mover.fuel), 30, 70);
 }
 
 function generateAsteroids(num) {

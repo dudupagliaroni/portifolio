@@ -10,7 +10,7 @@ function Mover() {
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
-  this.fuel = 100;
+  this.fuel = 150;
 
   this.boost = function () {
 
