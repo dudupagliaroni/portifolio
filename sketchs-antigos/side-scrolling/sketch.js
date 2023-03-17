@@ -6,9 +6,19 @@ let polyShape;
 let asteroids = [];
 let lasers = [];
 
-
 function setup() {
-  createCanvas(1200, 800);
+  const CANVAS = createCanvas(800, 800);
+  CANVAS.parent("canvas");
+
+  colorPicker = createColorPicker('#ed225d');
+  colorPicker.parent("colorPicker");
+
+  sliderAtrito = createSlider(0.98, 1, 1, 0.0001);
+  sliderAtrito.parent("slideAtrito");
+
+  valAtrito = createP("teste");
+  valAtrito.parent("val-atrito")
+
   grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
@@ -28,22 +38,27 @@ function draw() {
     asteroids[i].update();
     asteroids[i].show();
   }
-  
+
   for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
     lasers[i].show();
   }
 
+
+  valAtrito.html(sliderAtrito.value())
+
   showCoordenates();
 
   shipUpdate();
+
+  console.log(mover.fuel)
 }
 
 function shipUpdate() {
   mover.turn();
-  mover.update();
+  mover.update(sliderAtrito.value());
   mover.updatePositionToGrid();
-  mover.show();
+  mover.show(colorPicker.color());
 }
 
 function keyPressed() {
@@ -54,7 +69,7 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
   } else if ((keyCode = 229)) {
-    console.log("SPACE")
+    console.log("SPACE");
     lasers.push(new Laser(grid, mover));
   }
 }
@@ -75,7 +90,8 @@ function showCoordenates() {
   textFont("Helvetica");
   text("ship.pos.x: " + Math.round(mover.relPos.x), 30, 30);
   text("ship.pos.y: " + Math.round(mover.relPos.y), 30, 50);
-
+  text("ship.fuel: " + Math.round(mover.fuel, 30, 70));
+}
 
 function generateAsteroids(num) {
   for (let i = 0; i < num; i++) {
@@ -87,8 +103,4 @@ function generateAsteroids(num) {
   }
 }
 
-function deleteLaser() {
-  if (lasers.length > 100) {
-    //lasers.pop();
-  }
-}
+

@@ -39,4 +39,10 @@ function Laser(_grid, _ship) {
       this.posInGrid.y + 30
     );
   };
+
+  function deleteLaser() {
+    if (lasers > 100) {
+      //lasers.pop();
+    }
+  }
 }

@@ -3,6 +3,41 @@ html, body {
   padding: 0;
 }
 
+label {
+  margin: 5px;
+}
+
 canvas {
   display: block;
+}
+
+#debug{
+  margin: 20px;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.d-flex-c{
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  /* width: fit-content; */
+  /* margin: auto; */
+}
+
+.row > div {
+  margin-left: 5px;
+}
+
+.slider {
+  display: flex;
+}
+
+#val-atrito{
+  width: 40px;
 }

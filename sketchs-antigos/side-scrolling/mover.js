@@ -10,24 +10,29 @@ function Mover() {
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
+  this.fuel = 100;
 
   this.boost = function () {
-    var force = p5.Vector.fromAngle(this.heading);
-    this.vel.add(force.mult(0.1));
-    this.vel.limit(5);
+
+    if (this.fuel > 0){
+      var force = p5.Vector.fromAngle(this.heading);
+      this.vel.add(force.mult(0.1));
+      this.vel.limit(5);
+      this.fuel-=1;
+    }
   };
 
-  this.update = function () {
+  this.update = function (atrito) {
     if (this.isBoosting) {
       this.boost();
     }
-    this.vel.mult(0.99);
+    this.vel.mult(atrito);
   };
 
-  this.show = function () {
+  this.show = function (color) {
     push();
     noStroke();
-    fill(255, 0, 100);
+    fill(color);
     translate(this.pos.x, this.pos.y);
     rotate(this.heading);
     triangle(-this.r, this.r / 1.5, this.r, 0, -this.r, -this.r / 1.5);
