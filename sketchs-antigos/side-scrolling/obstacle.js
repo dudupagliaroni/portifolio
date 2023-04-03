@@ -13,12 +13,23 @@ function Obstacle(_grid, _x, _y) {
   };
 
   this.show = function () {
+    push();
+    noStroke();
     fill(255, 255, 255);
-    ellipse(this.pos.x, this.pos.y, this.width, this.height);
+    translate(this.pos.x, this.pos.y);
+    rotate(this.heading);
+    square(this.pos.x, this.pos.y, this.width);
+    // ellipse(this.pos.x, this.pos.y, this.width, this.height);
     fill(0);
+
+    pop();
+  };
+
+  this.text = function () {
     textSize(10);
     textFont("Helvetica");
     text("x: " + _x, this.pos.x - 5, this.pos.y);
     text("y: " + _y * -1, this.pos.x - 5, this.pos.y + 10);
   };
+
 }

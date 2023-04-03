@@ -13,11 +13,8 @@ function setup() {
   colorPicker = createColorPicker("#ed225d");
   colorPicker.parent("colorPicker");
 
-  sliderAtrito = createSlider(0.98, 1, 1, 0.0001);
+  sliderAtrito = createInput(" ");
   sliderAtrito.parent("slideAtrito");
-
-  valAtrito = createP("teste");
-  valAtrito.parent("val-atrito");
 
   grid = new Grid(10000, 10000);
   mover = new Mover();
@@ -44,8 +41,6 @@ function draw() {
     lasers[i].show();
   }
 
-  valAtrito.html(sliderAtrito.value());
-
   showCoordenates();
 
   shipUpdate();
@@ -55,7 +50,7 @@ function draw() {
 
 function shipUpdate() {
   mover.turn();
-  mover.update(sliderAtrito.value());
+  mover.update(0.99999);
   mover.updatePositionToGrid();
   mover.show(colorPicker.color());
 }

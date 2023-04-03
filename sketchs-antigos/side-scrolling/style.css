@@ -35,6 +35,8 @@ canvas {
 }
 
 .slider {
+  height: 25px;
+
   display: flex;
 }
 

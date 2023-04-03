@@ -18,7 +18,9 @@ function Mover() {
       var force = p5.Vector.fromAngle(this.heading);
       this.vel.add(force.mult(0.1));
       this.vel.limit(5);
-      this.fuel-=1;
+
+      // variavel que controla a perda de combustivel
+      // this.fuel-=1;
     }
   };
 
