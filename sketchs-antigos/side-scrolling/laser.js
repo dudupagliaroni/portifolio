@@ -6,6 +6,7 @@ function Laser(_grid, _ship) {
   this.posInicial = this.posInGrid.copy();
   let _x = _ship.relPos.x + 50 * cos(dir);
   let _y = -_ship.relPos.y + 50 * sin(dir);
+  this.laserLife = 0;
 
   console.log(_ship.heading);
 
@@ -14,6 +15,7 @@ function Laser(_grid, _ship) {
     this.posInGrid.y = this.grid.pos.y + this.grid.height / 2 + _y;
     _x += 18 * cos(dir);
     _y += 18 * sin(dir);
+    this.laserLife+=1;
   };
 
   this.show = function () {

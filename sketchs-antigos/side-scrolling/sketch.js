@@ -19,7 +19,7 @@ function setup() {
   grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
-  generateAsteroids(150);
+  generateAsteroids(200);
   centerGrid = new Obstacle(grid, 0, 0);
 }
 
@@ -40,7 +40,10 @@ function draw() {
     lasers[i].update();
     lasers[i].show();
   }
-
+  
+  if (lasers.length > 0){
+    console.log(lasers[0].laserLife)
+  }
   showCoordenates();
 
   shipUpdate();
@@ -57,9 +60,9 @@ function shipUpdate() {
 
 function keyPressed() {
   if (keyCode == RIGHT_ARROW) {
-    mover.setRotaion(0.1);
+    mover.setRotaion(0.05);
   } else if (keyCode == LEFT_ARROW) {
-    mover.setRotaion(-0.1);
+    mover.setRotaion(-0.05);
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
   } else if ((keyCode = 229)) {
@@ -100,7 +103,7 @@ function generateAsteroids(num) {
 
 function deleteLaser() {
   for (i = 0; i < lasers.length; i++) {
-    if (lasers[i].posInicial.dist(lasers[i].posInGrid) > 1000) {
+    if (lasers[i].laserLife > 50) {
       index = lasers.indexOf(i);
       lasers.splice(index, 1);
     }
