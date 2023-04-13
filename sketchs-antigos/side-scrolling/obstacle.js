@@ -29,12 +29,14 @@ function Obstacle(_grid, _x, _y) {
   this.show = function () {
     push();
     stroke(255);
-    strokeWeight(15);
+    strokeWeight(50);
     fill(255);
 
     point(this.pos.x, this.pos.y);
     var dx = this.r * cos(this.heading);
     var dy = this.r * sin(this.heading);
+    strokeWeight(10);
+
     point(this.pos.x + dx, this.pos.y + dy);
 
     pop();
