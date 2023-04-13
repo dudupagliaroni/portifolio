@@ -5,10 +5,12 @@ function Obstacle(_grid, _x, _y) {
   this.pos = createVector(_x, _y);
   this.heading = random(0, 359);
   this.r = random(50, 150);
+  this.size = random(50, 100)
+  this.moonSize = random(5, 15)
   this.vel = createVector();
   this.orbitVelocity = random(0.01, 0.1)
   let force = p5.Vector.fromAngle(this.heading);
-  force.setMag(random(10,25));
+  force.setMag(random(10,15));
   this.vel.add(force.mult(0.1));
 
   this.update = function () {
@@ -29,13 +31,13 @@ function Obstacle(_grid, _x, _y) {
   this.show = function () {
     push();
     stroke(255);
-    strokeWeight(50);
+    strokeWeight(this.size);
     fill(255);
 
     point(this.pos.x, this.pos.y);
     var dx = this.r * cos(this.heading);
     var dy = this.r * sin(this.heading);
-    strokeWeight(10);
+    strokeWeight(this.moonSize);
 
     point(this.pos.x + dx, this.pos.y + dy);
 
