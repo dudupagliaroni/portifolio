@@ -3,26 +3,43 @@ function Obstacle(_grid, _x, _y) {
   this.height = 500;
   this.grid = _grid;
   this.pos = createVector(_x, _y);
-  this.vel = this.pos.copy();
-  this.vel.setMag(5);
+  this.heading = random(0, 359);
+  this.r = random(50, 150);
+  this.vel = createVector();
+  this.orbitVelocity = random(0.01, 0.1)
+  let force = p5.Vector.fromAngle(this.heading);
+  force.setMag(random(10,25));
+  this.vel.add(force.mult(0.1));
 
   this.update = function () {
     this.pos.x = this.grid.pos.x + this.grid.width / 2 + _x;
     this.pos.y = this.grid.pos.y + this.grid.height / 2 + _y;
-    this.pos.add(this.vel);
+    _x += this.vel.x;
+    _y += this.vel.y;
+  };
+
+  this.setRotaion = function (angle) {
+    this.rotation = angle;
+  };
+
+  this.turn = function () {
+    this.heading += this.rotation;
   };
 
   this.show = function () {
     push();
-    noStroke();
-    fill(255, 255, 255);
-    translate(this.pos.x, this.pos.y);
-    rotate(this.heading);
-    square(this.pos.x, this.pos.y, this.width);
-    // ellipse(this.pos.x, this.pos.y, this.width, this.height);
-    fill(0);
+    stroke(255);
+    strokeWeight(15);
+    fill(255);
+
+    point(this.pos.x, this.pos.y);
+    var dx = this.r * cos(this.heading);
+    var dy = this.r * sin(this.heading);
+    point(this.pos.x + dx, this.pos.y + dy);
 
     pop();
+
+    this.heading += this.orbitVelocity;
   };
 
   this.text = function () {
@@ -31,5 +48,4 @@ function Obstacle(_grid, _x, _y) {
     text("x: " + _x, this.pos.x - 5, this.pos.y);
     text("y: " + _y * -1, this.pos.x - 5, this.pos.y + 10);
   };
-
 }

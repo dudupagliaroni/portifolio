@@ -19,7 +19,7 @@ function setup() {
   grid = new Grid(10000, 10000);
   mover = new Mover();
   polyShape = new PolyShape(grid);
-  generateAsteroids(15);
+  generateAsteroids(150);
   centerGrid = new Obstacle(grid, 0, 0);
 }
 
