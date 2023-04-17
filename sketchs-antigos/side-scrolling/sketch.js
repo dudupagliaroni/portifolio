@@ -57,13 +57,13 @@ function shipUpdate() {
 
 function keyPressed() {
   if (keyCode == RIGHT_ARROW) {
-    mover.setRotaion(0.1);
+    mover.setRotaion(0.05);
   } else if (keyCode == LEFT_ARROW) {
-    mover.setRotaion(-0.1);
+    mover.setRotaion(-0.05);
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
-  } else if ((keyCode = 229)) {
-    console.log("SPACE");
+  } else if ((keyCode == 229)) {
+    console.log("FIRE!!!");
     lasers.push(new Laser(grid, mover));
   }
 }

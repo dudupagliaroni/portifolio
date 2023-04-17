@@ -41,7 +41,6 @@ function Mover() {
     stroke(255);
     strokeWeight(4)
     point(this.gun.x, this.gun.y);
-
     pop();
   };
 
