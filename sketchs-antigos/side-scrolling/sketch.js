@@ -100,7 +100,7 @@ function generateAsteroids(num) {
 
 function deleteLaser() {
   for (i = 0; i < lasers.length; i++) {
-    if (lasers[i].posInicial.dist(lasers[i].posInGrid) > 1000) {
+    if (lasers[i].laserLife == 0) {
       index = lasers.indexOf(i);
       lasers.splice(index, 1);
     }
