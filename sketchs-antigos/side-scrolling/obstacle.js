@@ -14,8 +14,8 @@ function Obstacle(_grid, _x, _y) {
   force.setMag(random(1, 5));
   this.vel.add(force.mult(0.3));
 
-  for (let a = 0; a < 20; a++) {
-    rs.push(map(noise(random(1, 20)), 0, 1, 10, 200))
+  for (let a = 0; a < 13; a++) {
+    rs.push(floor(map(noise(random(1, 20)), 0, 1, 150, 200)))
   }
 
   console.log(rs)
@@ -34,13 +34,14 @@ function Obstacle(_grid, _x, _y) {
     point(this.pos.x, this.pos.y)
     noFill();
     beginShape();
-    for (let a = 0; a < TWO_PI; a+=0.5) {
-      var dx = rs[a] * cos(this.heading + a);
-      var dy = rs[a] * sin(this.heading + a);
+    for (let i = 0; i < rs.length; i+=(TWO_PI/rs.length)) {
+      var dx = 100 * cos(this.heading + i);
+      var dy = 100 * sin(this.heading + i);
 
       vertex(this.pos.x + dx, this.pos.y + dy);
+      point(this.pos.x + dx, this.pos.y + dy);
     }
-    endShape(CLOSE);
+    endShape();
 
     pop();
 

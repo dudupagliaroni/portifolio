@@ -62,7 +62,7 @@ function keyPressed() {
     mover.setRotaion(-0.05);
   } else if (keyCode == UP_ARROW) {
     mover.boosting(true);
-  } else if ((keyCode == 229)) {
+  } else if ((keyCode == 32)) {
     console.log("FIRE!!!");
     lasers.push(new Laser(grid, mover));
   }
