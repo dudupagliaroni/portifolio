@@ -36,23 +36,37 @@ function draw() {
     asteroids[i].show();
   }
 
-  for (var i = 0; i < lasers.length; i++) {
-    lasers[i].update();
-    lasers[i].show();
-  }
+  updateAllobjects()
 
   showCoordenates();
 
-  shipUpdate();
+ 
 
   deleteLaser();
 }
 
+function updateAllobjects(){
+
+  updateAllAsteroids()
+  shipUpdate();
+
+}
+
 function shipUpdate() {
+  if (mover.pos.x > 10000 && mover.pos.y > 10000){
+    mover.updateEngine();
+  }
   mover.turn();
   mover.update(0.99999);
   mover.updatePositionToGrid();
   mover.show(colorPicker.color());
+}
+
+function updateAllAsteroids() {
+  for (var i = 0; i < lasers.length; i++) {
+    lasers[i].update();
+    lasers[i].show();
+  }
 }
 
 function keyPressed() {
@@ -101,6 +115,7 @@ function generateAsteroids(num) {
 function deleteLaser() {
   for (i = 0; i < lasers.length; i++) {
     if (lasers[i].laserLife == 0) {
+      console.log(lasers[i].laserLife);
       index = lasers.indexOf(i);
       lasers.splice(index, 1);
     }

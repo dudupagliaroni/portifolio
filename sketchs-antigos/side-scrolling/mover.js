@@ -10,6 +10,8 @@ function Mover() {
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
+  this.fuelRatio = 1;
+  this.velMax = 5;
   this.fuel = 150;
 
   this.boost = function () {
@@ -17,12 +19,17 @@ function Mover() {
     if (this.fuel > 0){
       var force = p5.Vector.fromAngle(this.heading);
       this.vel.add(force.mult(0.1));
-      this.vel.limit(5);
+      this.vel.limit(this.velMax);
 
       // variavel que controla a perda de combustivel
-      // this.fuel-=1;
+      this.fuel-=this.fuelRatio;
     }
   };
+
+  this.updateEngine = function(){
+    this.velMax = 10;
+    this.fuelRatio = 5;
+  }
 
   this.update = function (atrito) {
     if (this.isBoosting) {

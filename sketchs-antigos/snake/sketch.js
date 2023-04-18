@@ -1,4 +1,4 @@
-let scl = 30;
+let scl = 5;
 let snake;
 let resetButton;
 let sliderR;
@@ -7,8 +7,8 @@ let sliderB;
 let inputWidth;
 
 function setup() {
-  frameRate(5);
-  let canvas = createCanvas(450, 450);
+  // frameRate(5);
+  let canvas = createCanvas(1000, 1000);
   canvas.parent("canvas-p5");
   //resetButton = createButton("Reset");
   sliderR = createSlider(0, 255, 100, 1);
@@ -25,7 +25,7 @@ function setup() {
 
 function draw() {
   background(51);
-  drawLines();
+  // drawLines();
 
   food.show();
   snake.update();
@@ -40,6 +40,7 @@ function draw() {
 }
 
 function drawLines() {
+
   stroke(150);
   for (var i = 0; i < width / scl; i++) {
     line(0, scl * i, width, scl * i);
