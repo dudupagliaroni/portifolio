@@ -18,8 +18,6 @@ function Obstacle(_grid, _x, _y) {
     rs.push(floor(map(noise(random(1, 20)), 0, 1, 150, 200)))
   }
 
-  console.log(rs)
-
   this.update = function () {
     this.pos.x = this.grid.pos.x + this.grid.width / 2 + _x;
     this.pos.y = this.grid.pos.y + this.grid.height / 2 + _y;
@@ -51,7 +49,7 @@ function Obstacle(_grid, _x, _y) {
   this.text = function () {
     textSize(10);
     textFont("Helvetica");
-    text("x: " + _x, this.pos.x - 5, this.pos.y);
-    text("y: " + _y * -1, this.pos.x - 5, this.pos.y + 10);
+    text("x: " + floor(_x), this.pos.x - 5, this.pos.y);
+    text("y: " + floor(_y) * -1, this.pos.x - 5, this.pos.y + 10);
   };
 }

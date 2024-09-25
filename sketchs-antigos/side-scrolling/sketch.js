@@ -34,13 +34,13 @@ function draw() {
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].update();
     asteroids[i].show();
+    asteroids[i].text();
+
   }
 
   updateAllobjects()
 
   showCoordenates();
-
- 
 
   deleteLaser();
 }
@@ -78,7 +78,7 @@ function keyPressed() {
     mover.boosting(true);
   } else if ((keyCode == 32)) {
     console.log("FIRE!!!");
-    lasers.push(new Laser(grid, mover));
+    lasers.unshift(new Laser(grid, mover));
   }
 }
 
@@ -114,10 +114,8 @@ function generateAsteroids(num) {
 
 function deleteLaser() {
   for (i = 0; i < lasers.length; i++) {
-    if (lasers[i].laserLife == 0) {
-      console.log(lasers[i].laserLife);
-      index = lasers.indexOf(i);
-      lasers.splice(index, 1);
+    if (lasers[i].laserLife < 1) {
+      lasers.pop();
     }
   }
 }
