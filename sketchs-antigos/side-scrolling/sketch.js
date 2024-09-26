@@ -8,22 +8,18 @@ let numAsteroids = 5;
 let lasers = [];
 
 function setup() {
-  const CANVAS = createCanvas(800, 800);
+  let size = 600;
+  const CANVAS = createCanvas(size, size);
   CANVAS.parent("canvas");
 
-  colorPicker = createColorPicker("#ed225d");
-  colorPicker.parent("colorPicker");
-
-  sliderAtrito = createInput(" ");
-  sliderAtrito.parent("slideAtrito");
-
-  grid = new Grid(1000, 1000);
+  grid = new Grid(size);
   ship = new Ship(grid);
-  polyShape = new PolyShape(grid);
   generateAsteroids(numAsteroids);
+  
 }
 
 function draw() {
+  // console.log(frameCount)
   background(0);
   updateAllobjects();
   showCoordenates();
@@ -35,6 +31,7 @@ function updateAllobjects() {
   updateShip();
   updateAsteroids();
   updateLasers();
+  point(grid.center.x, grid.center.y);
 }
 
 function updateGrid() {
@@ -45,8 +42,8 @@ function updateGrid() {
 function updateShip() {
   ship.turn();
   ship.update();
-  ship.updatePositionToGrid();
-  ship.show(colorPicker.color());
+  ship.updateGridPosition();
+  ship.show();
 }
 
 function updateLasers() {
@@ -54,6 +51,7 @@ function updateLasers() {
   for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
     lasers[i].show();
+    // console.log(lasers[i])
   }
 }
 
@@ -72,7 +70,7 @@ function keyPressed() {
   } else if (keyCode == LEFT_ARROW) {
     ship.setRotaion(-0.03);
   } else if (keyCode == UP_ARROW) {
-    ship.boosting(true);
+    ship.setBoost(true);
   } else if (keyCode == 32) {
     lasers.unshift(new Laser(grid, ship));
   }
@@ -83,7 +81,7 @@ function keyReleased() {
     ship.setRotaion(0);
   }
   if (keyCode == UP_ARROW) {
-    ship.boosting(false);
+    ship.setBoost(false);
   }
 }
 
@@ -134,11 +132,12 @@ function showCoordenates() {
   fill(255);
   textSize(15);
   textFont("Helvetica");
-  text("ship.pos.x: " + Math.round(ship.relPos.x), 30, 30);
-  text("ship.pos.y: " + Math.round(ship.relPos.y), 30, 50);
+  text("ship.pos.x: " + Math.round(ship.gridPosition.x), 30, 30);
+  text("ship.pos.y: " + Math.round(ship.gridPosition.y), 30, 50);
   text("ship.fuel: " + Math.round(ship.fuel), 30, 70);
   text("lasers: " + lasers.length, 30, 90);
   text("Asteroids: " + asteroids.length, 30, 110);
+  text("GridCenter: " + grid.center, 30, 130);
   // text(
   //   "vs: " + Math.abs(Math.round(ship.vel.y * 100) / 100).toFixed(2),
   //   30,

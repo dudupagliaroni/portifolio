@@ -1,7 +1,7 @@
-function Ship() {
-  this.pos = createVector(width / 2, height / 2);
+function Ship(_grid) {
+  this.screenPosition = createVector(width / 2, height / 2);
   this.gun = createVector();
-  this.relPos = createVector(0, 0);
+  this.gridPosition = createVector();
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
   this.atrito = 0.999;
@@ -10,7 +10,7 @@ function Ship() {
   this.rotation = 0;
   this.isBoosting = false;
   this.fuelRatio = 0.1;
-  this.velMax = 1;
+  this.velMax = 5;
   this.fuel = 500;
 
   this.boost = function () {
@@ -31,11 +31,11 @@ function Ship() {
     this.vel.mult(this.atrito);
   };
 
-  this.show = function (color) {
+  this.show = function () {
     push();
     noStroke();
-    fill(color);
-    translate(this.pos.x, this.pos.y);
+    fill(155, 155, 155);
+    translate(this.screenPosition.x, this.screenPosition.y);
     rotate(this.heading);
     triangle(-this.r, this.r / 1.5, this.r, 0, -this.r, -this.r / 1.5);
     stroke(255);
@@ -44,7 +44,7 @@ function Ship() {
     pop();
   };
 
-  this.boosting = function (isBoosting) {
+  this.setBoost = function (isBoosting) {
     this.isBoosting = isBoosting;
   };
 
@@ -56,9 +56,9 @@ function Ship() {
     this.heading += this.rotation;
   };
 
-  this.updatePositionToGrid = function () {
-    this.relPos.x = this.relPos.x + this.vel.x * -1;
-    this.relPos.y = this.relPos.y + this.vel.y * -1;
+  this.updateGridPosition = function () {
+    this.gridPosition.x += this.vel.x * -1;
+    this.gridPosition.y += this.vel.y * -1;
     this.updateGunPosition();
   };
 

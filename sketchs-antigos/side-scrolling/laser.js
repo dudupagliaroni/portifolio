@@ -1,22 +1,30 @@
 function Laser(_grid, _ship) {
-  this.isHit = false;
-
   this.grid = _grid;
-  let dir = _ship.heading;
-  this.position = _ship.relPos.copy();
-  let _x = _ship.relPos.x + 27 * cos(dir);
-  let _y = -_ship.relPos.y + 27 * sin(dir);
 
-  this.laserSpeed = 12;
-  this.laserLife = 50;
+  this.heading = _ship.heading;
+
+  this.position = _grid.center.copy();
+  let _x = _grid.center.x + 27 * cos(this.heading);
+  let _y = _grid.center.y + 27 * sin(this.heading);
+
+  this.laserSpeed = 0;
+  this.laserLife = 10;
   this.size = 15;
 
+  this.isHit = false;
+
   this.update = function () {
-    _x += this.laserSpeed * cos(dir);
-    _y += this.laserSpeed * sin(dir);
-    this.position.x = this.grid.pos.x + this.grid.width / 2 + _x;
-    this.position.y = this.grid.pos.y + this.grid.height / 2 + _y;
+    this.addAceleration();
+    this.position.x = _grid.center.x + this.position.x + _x;
+    // this.position.y += _y;
+
     this.laserLife--;
+    console.log(this.position.x);
+  };
+
+  this.addAceleration = function () {
+    _x += this.laserSpeed * cos(this.heading);
+    // _y += this.laserSpeed * sin(this.heading);
   };
 
   this.show = function () {
@@ -26,8 +34,8 @@ function Laser(_grid, _ship) {
     line(
       this.position.x,
       this.position.y,
-      this.position.x - this.size * cos(dir),
-      this.position.y - this.size * sin(dir)
+      this.position.x - this.size * cos(this.heading),
+      this.position.y - this.size * sin(this.heading)
     );
     pop();
   };
