@@ -2,29 +2,27 @@ function Laser(_grid, _ship) {
   this.grid = _grid;
 
   this.heading = _ship.heading;
+  this.position = createVector();
 
-  this.position = _grid.center.copy();
-  let _x = _grid.center.x + 27 * cos(this.heading);
-  let _y = _grid.center.y + 27 * sin(this.heading);
+  this.position.x =
+    _grid.center.x - ship.gridPosition.x + 35 * cos(this.heading);
+  this.position.y =
+    _grid.center.y - ship.gridPosition.y + 35 * sin(this.heading);
 
-  this.laserSpeed = 0;
-  this.laserLife = 10;
+  this.acc = createVector();
+  this.acc.x = cos(this.heading);
+  this.acc.y = sin(this.heading);
+
+  this.laserSpeed = 12;
+  this.laserLife = 50;
   this.size = 15;
 
   this.isHit = false;
 
   this.update = function () {
-    this.addAceleration();
-    this.position.x = _grid.center.x + this.position.x + _x;
-    // this.position.y += _y;
-
+    this.acc.setMag(this.laserSpeed);
+    this.position.add(this.acc);
     this.laserLife--;
-    console.log(this.position.x);
-  };
-
-  this.addAceleration = function () {
-    _x += this.laserSpeed * cos(this.heading);
-    // _y += this.laserSpeed * sin(this.heading);
   };
 
   this.show = function () {

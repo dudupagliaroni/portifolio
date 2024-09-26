@@ -1,10 +1,10 @@
 function Asteroid(_grid, _x, _y) {
 
-  this.name = "A" + floor(random(1000, 10000))
+  this.name = "A" + floor(random(1000, 10000)) +"-"+ floor(random(0, 10))
   this.isHit = false;
 
   //localização
-  this.grid = _grid;
+  this.grid = _grid;    
   this.pos = createVector(_x, _y);
   this.heading = random(0, 359);
   

@@ -4,7 +4,7 @@ function Ship(_grid) {
   this.gridPosition = createVector();
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.atrito = 0.999;
+  this.atrito = 0.99;
   this.r = 20;
   this.heading = 0;
   this.rotation = 0;

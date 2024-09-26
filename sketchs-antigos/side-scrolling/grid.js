@@ -6,7 +6,8 @@ function Grid(size) {
   this.center = createVector(size / 2, size / 2);
 
   this.updatePosition = function (ship) {
-    this.pos.set(ship.gridPosition);
+    this.pos.x = ship.gridPosition.x - this.width/2 + width/2
+    this.pos.y = ship.gridPosition.y - this.height/2 + width/2
     this.updateCenter();
   };
 

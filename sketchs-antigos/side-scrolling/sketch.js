@@ -4,18 +4,17 @@ let grid;
 let polyShape;
 
 let asteroids = [];
-let numAsteroids = 5;
+let numAsteroids = 150;
 let lasers = [];
 
 function setup() {
   let size = 600;
-  const CANVAS = createCanvas(size, size);
+  const CANVAS = createCanvas(800, 800);
   CANVAS.parent("canvas");
 
-  grid = new Grid(size);
+  grid = new Grid(10000);
   ship = new Ship(grid);
   generateAsteroids(numAsteroids);
-  
 }
 
 function draw() {
