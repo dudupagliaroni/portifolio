@@ -1,41 +1,34 @@
-function Mover() {
-
+function Ship() {
   this.pos = createVector(width / 2, height / 2);
   this.gun = createVector();
-  this.relPos = createVector();
+  this.relPos = createVector(0, 0);
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-
+  this.atrito = 0.999;
   this.r = 20;
   this.heading = 0;
   this.rotation = 0;
   this.isBoosting = false;
   this.fuelRatio = 0.1;
-  this.velMax = 5;
+  this.velMax = 1;
   this.fuel = 500;
 
   this.boost = function () {
-
-    if (this.fuel > 0){
+    if (this.fuel > 0) {
       var force = p5.Vector.fromAngle(this.heading);
       this.vel.add(force.mult(0.1));
       this.vel.limit(this.velMax);
 
       // variavel que controla a perda de combustivel
-      this.fuel-=this.fuelRatio;
+      this.fuel -= this.fuelRatio;
     }
   };
 
-  this.updateEngine = function(){
-    this.velMax = 10;
-    this.fuelRatio = 5;
-  }
-
-  this.update = function (atrito) {
+  this.update = function () {
     if (this.isBoosting) {
       this.boost();
     }
-    this.vel.mult(atrito);
+    this.vel.mult(this.atrito);
   };
 
   this.show = function (color) {
@@ -46,7 +39,7 @@ function Mover() {
     rotate(this.heading);
     triangle(-this.r, this.r / 1.5, this.r, 0, -this.r, -this.r / 1.5);
     stroke(255);
-    strokeWeight(4)
+    strokeWeight(4);
     point(this.gun.x, this.gun.y);
     pop();
   };
@@ -64,8 +57,8 @@ function Mover() {
   };
 
   this.updatePositionToGrid = function () {
-    this.relPos.x = (grid.pos.x + grid.width / 2 - width / 2) * -1;
-    this.relPos.y = grid.pos.y + grid.height / 2 - height / 2;
+    this.relPos.x = this.relPos.x + this.vel.x * -1;
+    this.relPos.y = this.relPos.y + this.vel.y * -1;
     this.updateGunPosition();
   };
 

@@ -4,9 +4,13 @@ function Grid(_width, _height) {
 
 
   this.pos = createVector(
-    width / 2 - this.width / 2,
-    height / 2 - this.height / 2
+    // width / 2 - this.width / 2,
+    // height / 2 - this.height / 2
   );
+
+  this.updatePosition = function(ship) {
+    this.pos.set(ship.relPos);
+  }
 
   this.drawLines = function () {
     let scl = 50;
