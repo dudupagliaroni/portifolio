@@ -4,7 +4,7 @@ function Ship(_grid) {
   this.gridPosition = createVector();
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.atrito = 0.99;
+  this.friction = 0.99;
   this.r = 20;
   this.heading = 0;
   this.rotation = 0;
@@ -28,7 +28,7 @@ function Ship(_grid) {
     if (this.isBoosting) {
       this.boost();
     }
-    this.vel.mult(this.atrito);
+    this.vel.mult(this.friction);
   };
 
   this.show = function () {
@@ -57,8 +57,8 @@ function Ship(_grid) {
   };
 
   this.updateGridPosition = function () {
-    this.gridPosition.x += this.vel.x * -1;
-    this.gridPosition.y += this.vel.y * -1;
+    this.gridPosition.x -= this.vel.x;
+    this.gridPosition.y -= this.vel.y;
     this.updateGunPosition();
   };
 

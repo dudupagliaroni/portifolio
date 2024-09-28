@@ -1,18 +1,18 @@
 let ship;
-let obstacle;
 let grid;
-let polyShape;
 
 let asteroids = [];
-let numAsteroids = 150;
+let numAsteroids = 10;
 let lasers = [];
+let particles = [];
 
 function setup() {
-  let size = 600;
-  const CANVAS = createCanvas(800, 800);
+  let canvasSize = 600;
+  let gridSize = 2000;
+  const CANVAS = createCanvas(canvasSize, canvasSize);
   CANVAS.parent("canvas");
 
-  grid = new Grid(10000);
+  grid = new Grid(gridSize);
   ship = new Ship(grid);
   generateAsteroids(numAsteroids);
 }
@@ -30,7 +30,6 @@ function updateAllobjects() {
   updateShip();
   updateAsteroids();
   updateLasers();
-  point(grid.center.x, grid.center.y);
 }
 
 function updateGrid() {
@@ -50,7 +49,6 @@ function updateLasers() {
   for (var i = 0; i < lasers.length; i++) {
     lasers[i].update();
     lasers[i].show();
-    // console.log(lasers[i])
   }
 }
 
@@ -88,9 +86,28 @@ function generateAsteroids(num) {
   for (let i = 0; i < num; i++) {
     asteroids[i] = new Asteroid(
       grid,
+      // 0,
+      // 0
       floor(random(-grid.width / 2, grid.width / 2)),
       floor(random(-grid.height / 2, grid.height / 2))
     );
+  }
+}
+
+function generateParticles() {
+  for (let i = 0; i < 5; i++) {
+    let p = new Particle();
+    particles.push(p);
+  }
+}
+
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    particles[i].addVelocity();
+    particles[i].show();
+    if (particles[i].finished()) {
+      particles.splice(i, 1);
+    }
   }
 }
 
@@ -131,20 +148,10 @@ function showCoordenates() {
   fill(255);
   textSize(15);
   textFont("Helvetica");
-  text("ship.pos.x: " + Math.round(ship.gridPosition.x), 30, 30);
+  text("ship.pos.x: " + Math.round(-ship.gridPosition.x), 30, 30);
   text("ship.pos.y: " + Math.round(ship.gridPosition.y), 30, 50);
   text("ship.fuel: " + Math.round(ship.fuel), 30, 70);
   text("lasers: " + lasers.length, 30, 90);
   text("Asteroids: " + asteroids.length, 30, 110);
-  text("GridCenter: " + grid.center, 30, 130);
-  // text(
-  //   "vs: " + Math.abs(Math.round(ship.vel.y * 100) / 100).toFixed(2),
-  //   30,
-  //   110
-  // );
-  // text(
-  //   "hs: " + Math.abs(Math.round(ship.vel.x * 100) / 100).toFixed(2),
-  //   30,
-  //   130
-  // );
+  // text("GridCenter: " + grid.center, 30, 130);
 }

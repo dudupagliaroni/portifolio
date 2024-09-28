@@ -7,7 +7,7 @@ function Grid(size) {
 
   this.updatePosition = function (ship) {
     this.pos.x = ship.gridPosition.x - this.width/2 + width/2
-    this.pos.y = ship.gridPosition.y - this.height/2 + width/2
+    this.pos.y = ship.gridPosition.y - this.height/2 + height/2
     this.updateCenter();
   };
 
