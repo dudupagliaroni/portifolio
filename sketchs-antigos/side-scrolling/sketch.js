@@ -18,10 +18,14 @@ function setup() {
 }
 
 function draw() {
-  // console.log(frameCount)
   background(0);
   updateAllobjects();
   showCoordenates();
+
+  if (ship.isBoosting) {
+    generateParticles();
+    console.log(particles.length);
+  }
 }
 
 function updateAllobjects() {
@@ -30,6 +34,7 @@ function updateAllobjects() {
   updateShip();
   updateAsteroids();
   updateLasers();
+  updateParticles();
 }
 
 function updateGrid() {
@@ -61,6 +66,17 @@ function updateAsteroids() {
   }
 }
 
+function updateParticles() {
+  for (let i = this.particles.length - 1; i >= 0; i--) {
+    let p = this.particles[i];
+    p.update();
+    p.show();
+    if (p.isDead()) {
+      this.particles.splice(i, 1);
+    }
+  }
+}
+
 function keyPressed() {
   if (keyCode == RIGHT_ARROW) {
     ship.setRotaion(0.03);
@@ -88,24 +104,21 @@ function generateAsteroids(num) {
       grid,
       // 0,
       // 0
-      floor(random(-grid.width / 2, grid.width / 2)),
-      floor(random(-grid.height / 2, grid.height / 2))
+      floor(random(-grid.width / 2 + 200, grid.height / 2 - 200)),
+      floor(random(-grid.height / 2 + 200, grid.height / 2 - 200))
     );
   }
 }
 
 function generateParticles() {
-  for (let i = 0; i < 5; i++) {
-    let p = new Particle();
-    particles.push(p);
-  }
+  particles.push(new Particle(ship, grid));
 }
 
 function updateParticles() {
   for (let i = particles.length - 1; i >= 0; i--) {
-    particles[i].addVelocity();
+    particles[i].update();
     particles[i].show();
-    if (particles[i].finished()) {
+    if (particles[i].isDead()) {
       particles.splice(i, 1);
     }
   }
@@ -152,6 +165,6 @@ function showCoordenates() {
   text("ship.pos.y: " + Math.round(ship.gridPosition.y), 30, 50);
   text("ship.fuel: " + Math.round(ship.fuel), 30, 70);
   text("lasers: " + lasers.length, 30, 90);
-  text("Asteroids: " + asteroids.length, 30, 110);
+  text("asteroids: " + asteroids.length, 30, 110);
   // text("GridCenter: " + grid.center, 30, 130);
 }
