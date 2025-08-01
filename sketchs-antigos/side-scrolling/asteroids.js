@@ -1,6 +1,7 @@
 function Asteroid(_grid, _x, _y) {
   this.name = "A" + floor(random(1000, 10000)) + "-" + floor(random(0, 99));
   this.isHit = false;
+  this.isColliding = false;
 
   //localização
   this.grid = _grid;
@@ -27,30 +28,46 @@ function Asteroid(_grid, _x, _y) {
   this.vel.add(this.direction);
 
   //numero de lados e criacao dos vertex
-  this.r = floor(random(50, 200));
-  let sideNumber = random(5, 20);
+  this.r = floor(random(50, 60));
+  let sideNumber = random(10, 20);
   let asteroidVertexs = [];
 
   for (let a = 0; a < sideNumber; a++) {
-    asteroidVertexs.push(this.r + floor(random(-20, 20)));
+    asteroidVertexs.push(this.r + floor(random(-5, 5)));
   }
 
   this.update = function () {
+    console.log(this.isColliding);
     if (_x > _grid.width / 2 - this.r) {
       let n = createVector(1, 0);
       this.vel.reflect(n);
+      this.rotationSpeed = this.rotationSpeed * -1;
     }
     if (_x < -_grid.width / 2 + this.r) {
       let n = createVector(1, 0);
       this.vel.reflect(n);
+      this.rotationSpeed = this.rotationSpeed * -1;
     }
     if (_y > _grid.height / 2 - this.r) {
       let n = createVector(0, 1);
       this.vel.reflect(n);
+      this.rotationSpeed = this.rotationSpeed * -1;
     }
     if (_y < -_grid.height / 2 + this.r) {
       let n = createVector(0, 1);
       this.vel.reflect(n);
+      this.rotationSpeed = this.rotationSpeed * -1;
+    }
+
+    if (this.isColliding) {
+      console.log('teste')
+
+      let perpendicular = createVector(-this.vel.y, this.vel.x);
+      this.vel.rotate(perpendicular.heading());
+
+      this.isColliding = false;
+
+      console.log('teste2')
     }
 
     _x += this.vel.x;
@@ -75,6 +92,26 @@ function Asteroid(_grid, _x, _y) {
       vertex(this.pos.x + dx, this.pos.y + dy);
     }
     endShape(CLOSE);
+    stroke("green");
+    line(
+      this.pos.x,
+      this.pos.y,
+      this.pos.x + 100 * cos(this.vel.heading()),
+      this.pos.y + 100 * sin(this.vel.heading())
+    );
+
+    let perpendicular = createVector(-this.vel.y, this.vel.x);
+    stroke("red");
+
+    line(
+      this.pos.x,
+      this.pos.y,
+      this.pos.x + 100 * cos(perpendicular.heading()),
+      this.pos.y + 100 * sin(perpendicular.heading())
+    );
+
+    stroke("blue")
+    
     pop();
   };
 
@@ -82,13 +119,9 @@ function Asteroid(_grid, _x, _y) {
     textSize(10);
     textFont("Helvetica");
     text("x: " + floor(_x), this.pos.x + 5, this.pos.y);
-    text("y: " + floor(_y*-1), this.pos.x + 5, this.pos.y + 10);
+    text("y: " + floor(_y * -1), this.pos.x + 5, this.pos.y + 10);
     text("r: " + floor(this.r), this.pos.x + 5, this.pos.y + 20);
-    text(
-      "d: " + this.vel.heading(),
-      this.pos.x + 5,
-      this.pos.y + 30
-    );
+    // text("d: " + this.vel.heading(), this.pos.x + 5, this.pos.y + 30);
   };
 
   this.createVertices = function () {
@@ -102,5 +135,13 @@ function Asteroid(_grid, _x, _y) {
       vertex.push(v);
     }
     return vertex;
+  };
+
+  this.setVel = function (vel) {
+    this.vel.set(vel);
+  };
+
+  this.setColliding = function (isColliding) {
+    this.isColliding = isColliding;
   };
 }

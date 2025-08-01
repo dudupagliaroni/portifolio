@@ -24,10 +24,12 @@ function Particle(_ship, _grid) {
   };
 
   this.show = function () {
+    push();
     stroke(255, this.lifespan);
     strokeWeight(2);
     fill(255, this.lifespan);
     ellipse(this.position.x, this.position.y, 2.5, 2.5);
+    pop();
   };
 
   this.isDead = function () {

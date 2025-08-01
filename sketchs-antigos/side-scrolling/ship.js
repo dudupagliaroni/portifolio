@@ -4,7 +4,7 @@ function Ship(_grid) {
   this.gridPosition = createVector();
   this.vel = createVector(0, 0);
   this.acc = createVector(0, 0);
-  this.friction = 0.99;
+  this.friction = 1;
   this.r = 20;
   this.heading = 0;
   this.rotation = 0;
@@ -16,7 +16,7 @@ function Ship(_grid) {
   this.boost = function () {
     if (this.fuel > 0) {
       var force = p5.Vector.fromAngle(this.heading);
-      this.vel.add(force.mult(0.1));
+      this.vel.add(force.mult(0.05));
       this.vel.limit(this.velMax);
 
       // variavel que controla a perda de combustivel

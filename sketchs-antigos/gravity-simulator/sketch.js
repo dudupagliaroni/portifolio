@@ -1,52 +1,35 @@
+/*
+----- Coding Tutorial by Patt Vira ----- 
+Name: Intro to matter.js (with p5.js)
+Video Tutorial: https://youtu.be/cLXNxn5N-2Y
 
-let Particle = function(position) {
-  this.acceleration = createVector(0, 1);
-  // this.velocity = createVector(-3, );
-  this.velocity = createVector(random(-5, 5), random(0, 1));
-  this.position = position.copy();
-  this.lifespan = 255;
-};
+Connect with Patt: @pattvira
+https://www.pattvira.com/
+----------------------------------------
+*/
 
-Particle.prototype.run = function() {
-  this.update();
-  this.display();
-};
 
-// Method to update position
-Particle.prototype.update = function(){
-  this.velocity.add(this.acceleration);
-  this.position.add(this.velocity);
-  this.lifespan -= 2;
-};
+const {Engine, Body, Bodies, Composite} = Matter;
 
-// Method to display
-Particle.prototype.display = function() {
-  stroke(200, this.lifespan);
-  strokeWeight(2);
-  fill(127, this.lifespan);
-  ellipse(this.position.x, this.position.y, 5, 5);
-};
+let engine;
+let boxes = []; let ground;
 
-// Is the particle still useful?
-Particle.prototype.isDead = function(){
-  return this.lifespan < 0;
-};
+function setup() {
+  createCanvas(400, 400);
+  engine = Engine.create();
+ 
+  ground = new Ground(200, 300, 400, 10);
+}
 
-let ParticleSystem = function(position) {
-  this.origin = position.copy();
-  this.particles = [];
-};
-
-ParticleSystem.prototype.addParticle = function() {
-  this.particles.push(new Particle(this.origin));
-};
-
-ParticleSystem.prototype.run = function() {
-  for (let i = this.particles.length-1; i >= 0; i--) {
-    let p = this.particles[i];
-    p.run();
-    if (p.isDead()) {
-      this.particles.splice(i, 1);
-    }
+function draw() {
+  background(220);
+  Engine.update(engine);
+  for (let i=0; i<boxes.length; i++) {
+    boxes[i].display();
   }
-};
+  ground.display();
+}
+
+function mousePressed() {
+  boxes.push(new Rect(mouseX, mouseY, 20, 20));
+}
